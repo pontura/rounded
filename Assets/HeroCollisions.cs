@@ -40,15 +40,13 @@ public class HeroCollisions : MonoBehaviour {
 		if (collision.transform.parent.name == "Enemy"){
 			if(hero.action!=Hero.actions.RUNNING){
 				GameObject go = collision.transform.parent.gameObject;
-				float heroHeightDiff = (collision.transform.localPosition.y - transform.localPosition.y);
-				if (heroHeightDiff > 5)
+
+				if (go.GetComponent<Rebotable>())
 				{
-					if (go.GetComponent<Rebotable>())
-					{
-						Rebotable rebotable = go.GetComponent<Rebotable>();
-						hero.Rebota(20);
-					}
+					Rebotable rebotable = go.GetComponent<Rebotable>();
+					hero.Rebota(20);
 				}
+				Destroy(collision.transform.parent.gameObject);
 			}else{
 				Application.LoadLevel("mainScreen");
 			}
