@@ -9,7 +9,7 @@ public class Hero : MonoBehaviour {
     public Planet planet;
 
     float gravityConstant = 1000f;
-    float MAX_SPEED = 0.1f;
+    float MAX_SPEED = 0.15f;
     float direction;
 
     public enum actions

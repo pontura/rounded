@@ -35,7 +35,7 @@ public class Controls : MonoBehaviour {
             if (Input.GetTouch(0).phase == TouchPhase.Began)
                 hero.Jump();
         }
-        float direction = Input.acceleration.x * 5;
+        float direction = Input.acceleration.x * 0.5f;
         movePlanet(direction);
     }
 
