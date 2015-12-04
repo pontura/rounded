@@ -22,7 +22,7 @@ public class HeroCollisions : MonoBehaviour {
         if (collision.transform.gameObject.name == "ground")
         {
             hero.OnGround(true);
-        }
+		}
         else
         {
             GameObject go = collision.transform.parent.gameObject;
@@ -37,6 +37,23 @@ public class HeroCollisions : MonoBehaviour {
             }
         }
 
+		if (collision.transform.parent.name == "Enemy"){
+			if(hero.action!=Hero.actions.RUNNING){
+				GameObject go = collision.transform.parent.gameObject;
+				float heroHeightDiff = (collision.transform.localPosition.y - transform.localPosition.y);
+				if (heroHeightDiff > 5)
+				{
+					if (go.GetComponent<Rebotable>())
+					{
+						Rebotable rebotable = go.GetComponent<Rebotable>();
+						hero.Rebota(20);
+					}
+				}
+			}else{
+				Application.LoadLevel("mainScreen");
+			}
+
+		}
     }
     void OnCollisionExit2D(Collision2D collision)
     {
